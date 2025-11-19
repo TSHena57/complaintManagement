@@ -16,12 +16,6 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
-
-            ['name' => 'city-list','module' => 'General-Setup', 'sub_module' => 'city','guard_name' => 'web', 'parent_menu' => 'Mutual Assesment'],
-            ['name' => 'city-create','module' => 'General-Setup', 'sub_module' => 'city','guard_name' => 'web', 'parent_menu' => 'Mutual Assesment'],
-            ['name' => 'city-edit','module' => 'General-Setup', 'sub_module' => 'city','guard_name' => 'web', 'parent_menu' => 'Mutual Assesment'],
-            ['name' => 'city-delete','module' => 'General-Setup', 'sub_module' => 'city','guard_name' => 'web', 'parent_menu' => 'Mutual Assesment'],
-
             ['name' => 'User-list','module' => 'System-Settings', 'sub_module' => 'User','guard_name' => 'web', 'parent_menu' => 'Mutual Assesment'],
             ['name' => 'User-create','module' => 'System-Settings', 'sub_module' => 'User','guard_name' => 'web', 'parent_menu' => 'Mutual Assesment'],
             ['name' => 'User-edit','module' => 'System-Settings', 'sub_module' => 'User','guard_name' => 'web', 'parent_menu' => 'Mutual Assesment'],

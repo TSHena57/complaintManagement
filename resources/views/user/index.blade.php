@@ -57,62 +57,6 @@
 							</select>
 						</div>
 						<div class="col-xl-4">
-							<label class="form-label">Blood Group </label>
-							<select class="form-select single-select" id="blood_group" name="blood_group">
-								<option value="0">-- Select --</option>
-								<option value="A+">A+</option>
-								<option value="A-">A-</option>
-								<option value="B+">B+</option>
-								<option value="B-">B-</option>
-								<option value="AB+">AB+</option>
-								<option value="AB-">AB-</option>
-								<option value="O+">O+</option>
-								<option value="O-">O-</option>
-							</select>
-						</div>
-						<div class="col-xl-4">
-							<label class="form-label">Religion </label>
-							<select class="form-select single-select" id="religion" name="religion">
-								<option value="0">-- Select --</option>
-								<option value="Islam">Islam</option>
-								<option value="Hinduism">Hinduism</option>
-								<option value="Christianity">Christianity</option>
-								<option value="Buddhism">Buddhism</option>
-								<option value="Judaism">Judaism</option>
-								<option value="Sikhism">Sikhism</option>
-								<option value="Others">Others</option>
-							</select>
-						</div>
-						<div class="col-xl-4">
-							<label class="form-label" for="country_id">Country </label>
-							<select class="form-select server-select country_id" id="country_id" name="country_id">
-								<option value="0">-- Select Country --</option>											
-							</select>
-						</div>
-						<div class="col-xl-4">
-							<label class="form-label" for="city_id">City </label>
-							<select class="form-select server-select city_id" id="city_id" name="city_id">
-								<option value="0">-- Select City --</option>
-							</select>
-						</div>
-						<div class="col-xl-4">
-							<label class="form-label">Service <span class="text-danger">*<span></label>
-							<select class="form-select single-select" id="service" name="service" required>
-								<option value="0">-- Select --</option>
-								<option value="Army">Army</option>
-								<option value="Navy">Navy</option>
-								<option value="Air">Air</option>
-							</select>
-						</div>
-						<div class="col-xl-4">
-							<label class="form-label">Date of Commission </label>
-							<input type="date" class="form-control" placeholder="Date of Commission" id="date_of_commission" name="date_of_commission">
-						</div>
-						<div class="col-xl-4">
-							<label class="form-label">Date of Join in DSCSC </label>
-							<input type="date" class="form-control" placeholder="Date of Join in DSCSC" id="date_of_join_in_dscsc" name="date_of_join_in_dscsc">
-						</div>
-						<div class="col-xl-4">
 							<label class="form-label">Photo </label>
 							<input class="form-control" type="file" id="formFile" name="photo">
 						</div>
@@ -123,14 +67,6 @@
 						<div class="col-xl-4">
 							<label class="form-label">Signature </label>
 							<input class="form-control" type="file" id="signature" name="signature">
-						</div>
-						<div class="col-xl-4">
-							<label class="form-label">User Type <span class="text-danger">*<span></label>
-							<select class="form-select single-select" id="user_type" name="user_type" required>
-								<option value="0">-- Select Type --</option>
-								<option value="Parmanent">Parmanent</option>
-								<option value="Non-Parmanent">Non-Parmanent</option>
-							</select>
 						</div>
 						<div class="col-xl-4">
 							<label class="form-label">Role Assign <span class="text-danger">*<span></label>
@@ -164,9 +100,6 @@
 								<th>Email</th>
 								<th>NID</th>
 								<th>Passport</th>
-								<th>Country</th>
-								<th>City</th>
-								<th>User Type</th>
                                 <th width="5%" class="text-end">Action</th>
                             </tr>
                         </thead>
@@ -195,9 +128,6 @@
                     {data: 'email', name: 'email'},
                     {data: 'nid', name: 'nid'},
                     {data: 'passport', name: 'passport'},
-                    {data: 'country.name', name: 'country.name'},
-                    {data: 'city.name', name: 'city.name'},
-                    {data: 'user_type', name: 'user_type'},
                     {data: 'action', name: 'action', className: 'text-end', orderable: false, searchable: false},
                 ],
 				dom: 'Bfrtip',
@@ -228,45 +158,6 @@
             });
             $.fn.dataTable.ext.errMode = () => alert('Error while loading the table data. Please refresh');
                 
-        });
-        $(".country_id").select2({
-            ajax: {
-                url: '{{route('country.list_for_select_ajax')}}',
-                type: "get",
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                        var query = {
-                            search: params.term,
-                            page: params.page || 1,
-                        }
-                        return query;
-                },
-                cache: false
-            },
-            escapeMarkup: function (m) {
-                return m;
-            }
-        });
-        $(".city_id").select2({
-            ajax: {
-                url: '{{route('cities.list_for_select_ajax')}}',
-                type: "get",
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                        var query = {
-                            search: params.term,
-                            page: params.page || 1,
-                            country_id: $('#country_id').val(),
-                        }
-                        return query;
-                },
-                cache: false
-            },
-            escapeMarkup: function (m) {
-                return m;
-            }
         });
     </script>
 @endpush

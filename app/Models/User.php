@@ -28,8 +28,6 @@ class User extends Authenticatable
         'passport',
         'address',
         'mobile',
-        'gender',
-        'blood_group',
         'role_id',
         'status',
 
@@ -56,16 +54,6 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function country()
-    {
-        return $this->belongsTo(Country::class)->withDefault(['name' => 'N/A']);
-    }
-
-    public function city()
-    {
-        return $this->belongsTo(City::class)->withDefault(['name' => 'N/A']);
     }
 
     public function role()
