@@ -69,7 +69,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="image-container">
-                <img class="img-print-view" src="{{asset('assets/images/logo.jpg')}}" alt="DSCSC">               
+                <img class="img-print-view" src="{{asset('assets/images/logo.png')}}" alt="DSCSC">               
             </div>
         </div>
     </div>

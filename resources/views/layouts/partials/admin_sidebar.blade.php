@@ -1,7 +1,7 @@
 <aside class="sidebar-wrapper" data-simplebar="true">
    <div class="sidebar-header">
       <div>
-         <img src="{{asset('assets/images/logo.jpg')}}" class="logo-icon" alt="logo icon">
+         <img src="{{asset('assets/images/logo.png')}}" class="logo-icon" alt="logo icon">
       </div>
       <div>
          <h4 class="logo-text">COMPLAINT</h4>
