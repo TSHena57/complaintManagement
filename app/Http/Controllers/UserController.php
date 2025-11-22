@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         $data['roles'] = Role::where('status',1)->where('id','>',1)->get(['id','name']);
         if ($request->ajax()) {
-            $data = User::with(['country:id,name','city:id,name'])->where('id','!=',1);
+            $data = User::where('id','!=',1);
 
             return Datatables::of($data)
                 ->addIndexColumn()
