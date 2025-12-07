@@ -33,6 +33,20 @@
                 </ul>
             </li>
         @endcanany
+         <li>
+            <a href="{{ route('complaint.my-index') }}">
+               <div class="parent-icon"><i class="bi bi-grid"></i>
+               </div>
+               <div class="menu-title"> My Complaints</div>
+            </a>
+         </li>
+         <li>
+            <a href="{{ route('complaint.create') }}">
+               <div class="parent-icon"><i class="bi bi-grid"></i>
+               </div>
+               <div class="menu-title"> Add Complaints</div>
+            </a>
+         </li>
     </ul>
     <!--end navigation-->
 </aside>

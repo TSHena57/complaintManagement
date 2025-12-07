@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CityController;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\RoleController;
 
 Auth::routes(['verify' => true]);
@@ -28,15 +28,15 @@ Route::middleware(['auth', 'verified'])->prefix('/admin')->group(function () {
         Route::get('/select-list-ajax-based-on-classification', 'list_for_select_ajax_based_on_classification')->name('user.list_for_select_ajax_based_on_classification');
 
     });
-    Route::controller(CityController::class)->prefix('/cities')->group(function () {
-        Route::get('/index', 'index')->name('cities.index');
-        Route::post('/store', 'store')->name('cities.store');
-        Route::get('/edit/{id}', 'edit')->name('cities.edit');
-        Route::post('/update/{id}', 'update')->name('cities.update');
-        Route::get('/select-list-ajax', 'list_for_select_ajax')->name('cities.list_for_select_ajax');
-        Route::get('/select-list-ajax-state', 'list_for_select_ajax_state')->name('state.list_for_select_ajax');
-        Route::get('/select-list-ajax-country', 'list_for_select_ajax_country')->name('country.list_for_select_ajax');
 
+    Route::controller(ComplaintController::class)->prefix('/complaint')->group(function () {
+        Route::get('/my-index', 'my_index')->name('complaint.my-index');
+        Route::get('/all', 'index')->name('complaint.index');
+        Route::get('/create', 'create')->name('complaint.create');
+        Route::post('/store', 'store')->name('complaint.store');
+        Route::get('/edit/{id}', 'edit')->name('complaint.edit');
+        Route::post('/update/{id}', 'update')->name('complaint.update');
+        Route::post('/delete', 'destroy')->name('complaint.delete');
     });
 });
 Route::controller(RoleController::class)->prefix('user-management')->middleware(['auth'])
