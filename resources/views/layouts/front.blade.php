@@ -30,8 +30,15 @@
                             href="{{ route('home') }}">Home</a></li>
                     <li class="nav-item"><a class="nav-link @if (Route::is('complaints')) active @endif"
                             href="{{ route('complaints') }}">Complaints</a></li>
-                    <li class="nav-item"><a class="nav-link @if (Route::is('login')) active @endif"
+                    @if (!auth()->check())
+                        <li class="nav-item"><a class="nav-link @if (Route::is('login')) active @endif"
                             href="{{ route('login') }}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link @if (Route::is('register')) active @endif"
+                                href="{{ route('register') }}">Sign Up</a></li>
+                    @else
+                        <li class="nav-item"><a class="nav-link @if (Route::is('admin_home')) active @endif"
+                                    href="{{ route('admin_home') }}">Dashboard</a></li>
+                    @endif
                 </ul>
             </div>
         </div>

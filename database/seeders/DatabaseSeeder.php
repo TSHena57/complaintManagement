@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(CountrySeeder::class);
-        $this->call(StateSeeder::class);
-        $this->call(MututalAssesmentDatabaseSeeder::class);
+        // $this->call(StateSeeder::class);
     }
 }

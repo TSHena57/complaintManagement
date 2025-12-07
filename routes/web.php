@@ -6,14 +6,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\RoleController;
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/complaints', [HomeController::class, 'complaints'])->name('complaints');
 Route::get('/complaints/{id}', [HomeController::class, 'complaint_details'])->name('complaint_details');
 
 Route::middleware(['auth', 'verified'])->prefix('/admin')->group(function () {
-    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('home');
+    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('admin_home');
    
     Route::get('/change-password', [HomeController::class, 'change_password'])->name('change_password');
     Route::post('/update-change-password', [HomeController::class, 'update_change_password'])->name('update_change_password');
