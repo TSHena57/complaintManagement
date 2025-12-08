@@ -16,28 +16,28 @@
                 <div class="col-md-3 col-6">
                     <div class="counter-box p-4 shadow-sm">
                         <i class="bi bi-clipboard-data text-primary fs-2 mb-2"></i>
-                        <h2>245</h2>
+                        <h2>{{ $complaints }}</h2>
                         <p>Total Complaints</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="counter-box p-4 shadow-sm">
                         <i class="bi bi-hourglass-split text-warning fs-2 mb-2"></i>
-                        <h2>67</h2>
+                        <h2>{{ $complaint_pending }}</h2>
                         <p>Pending</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="counter-box p-4 shadow-sm">
                         <i class="bi bi-tools text-info fs-2 mb-2"></i>
-                        <h2>98</h2>
+                        <h2>{{ $complaint_in_progress }}</h2>
                         <p>In Progress</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="counter-box p-4 shadow-sm">
                         <i class="bi bi-check-circle text-success fs-2 mb-2"></i>
-                        <h2>80</h2>
+                        <h2>{{ $complaint_completed }}</h2>
                         <p>Completed</p>
                     </div>
                 </div>
@@ -68,36 +68,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>CP-1001</td>
-                                    <td>Network Issue</td>
-                                    <td><span class="badge bg-warning text-dark">Pending</span></td>
-                                    <td>John Doe</td>
-                                    <td>2025-11-01</td>
-                                    <td><a href="{{ route('complaint_details',1) }}" class="btn btn-sm btn-outline-primary"><i
-                                                class="bi bi-eye"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>CP-1002</td>
-                                    <td>Server Down</td>
-                                    <td><span class="badge bg-info text-dark">In Progress</span></td>
-                                    <td>Jane Smith</td>
-                                    <td>2025-10-30</td>
-                                    <td><a href="{{ route('complaint_details',1) }}" class="btn btn-sm btn-outline-primary"><i
-                                                class="bi bi-eye"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>CP-1003</td>
-                                    <td>Unauthorized Access</td>
-                                    <td><span class="badge bg-success">Completed</span></td>
-                                    <td>Alex Johnson</td>
-                                    <td>2025-10-25</td>
-                                    <td><a href="{{ route('complaint_details',1) }}" class="btn btn-sm btn-outline-primary"><i
-                                                class="bi bi-eye"></i></a></td>
-                                </tr>
+                                @foreach ($complaints_data as $k => $item)
+                                    <tr>
+                                        <td>{{ $k+1 }}</td>
+                                        <td>Complaint-{{ $item->id }}</td>
+                                        <td>{{ $item->title }}</td>
+                                        <td><span class="badge bg-warning text-dark">{{ ucwords(str_replace('_', ' ', $item->complaint_status)) }}</span></td>
+                                        <td>{{ $item->user->name }}</td>
+                                        <td>{{ date('d M, Y', strtotime($item->created_at)) }}</td>
+                                        <td><a href="{{ route('complaint_details',$item->id) }}" class="btn btn-sm btn-outline-primary"><i
+                                                    class="bi bi-eye"></i></a></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -36,7 +36,7 @@
 
                         <div class="col-xl-12">
                             <label class="form-label" for="description">Description <span class="text-danger">*</span></label>
-                            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe your complaint" required></textarea>
+                            <textarea class="form-control" id="description" name="description" rows="6" placeholder="Describe your complaint" required></textarea>
                         </div>
 
                         <div class="submit text-end">

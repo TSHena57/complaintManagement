@@ -16,28 +16,28 @@
                 <div class="col-md-3">
                     <div class="counter-box p-4 rounded shadow-sm">
                         <i class="bi bi-megaphone display-5 text-primary mb-3"></i>
-                        <h2 class="fw-bold" data-count="320">0</h2>
+                        <h2 class="fw-bold" data-count="{{ $complaints }}">{{ $complaints }}</h2>
                         <p class="text-muted">Complaints Submitted</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="counter-box p-4 rounded shadow-sm">
                         <i class="bi bi-people display-5 text-success mb-3"></i>
-                        <h2 class="fw-bold" data-count="210">0</h2>
+                        <h2 class="fw-bold" data-count="{{ $complainers }}">{{ $complainers }}</h2>
                         <p class="text-muted">Registered Users</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="counter-box p-4 rounded shadow-sm">
                         <i class="bi bi-gear-wide-connected display-5 text-warning mb-3"></i>
-                        <h2 class="fw-bold" data-count="145">0</h2>
+                        <h2 class="fw-bold" data-count="{{ $complaint_in_progress }}">{{ $complaint_in_progress }}</h2>
                         <p class="text-muted">Complaints In Progress</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="counter-box p-4 rounded shadow-sm">
                         <i class="bi bi-check-circle display-5 text-info mb-3"></i>
-                        <h2 class="fw-bold" data-count="175">0</h2>
+                        <h2 class="fw-bold" data-count="{{ $complaint_completed }}">{{ $complaint_completed }}</h2>
                         <p class="text-muted">Actions Completed</p>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="col-md-4">
                     <div class="info-card text-center p-4 rounded shadow-sm h-100">
                         <i class="bi bi-pencil-square display-5 text-primary mb-3"></i>
-                        <h5 class="fw-bold mb-2">1. Submit Complaint</h5>
+                        <h5 class="fw-bold mb-2">1. Get Registered</h5>
                         <p class="text-muted">Easily log your complaint online with complete details from any device,
                             anytime.</p>
                     </div>
@@ -67,16 +67,17 @@
                 <div class="col-md-4">
                     <div class="info-card text-center p-4 rounded shadow-sm h-100">
                         <i class="bi bi-clipboard-check display-5 text-success mb-3"></i>
-                        <h5 class="fw-bold mb-2">2. Track Progress</h5>
-                        <p class="text-muted">Monitor every stage of the resolution process with real-time updates.</p>
+                        <h5 class="fw-bold mb-2">2. Submit Complaint</h5>
+                        <p class="text-muted">Easily log your complaint online with complete details from any device,
+                            anytime.</p>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="info-card text-center p-4 rounded shadow-sm h-100">
                         <i class="bi bi-trophy display-5 text-warning mb-3"></i>
-                        <h5 class="fw-bold mb-2">3. Get Resolution</h5>
-                        <p class="text-muted">Our team ensures your issue is resolved quickly and transparently.</p>
+                        <h5 class="fw-bold mb-2">3. Track Progress</h5>
+                        <p class="text-muted">Monitor every stage of the resolution process with real-time updates. Our team ensures your issue is resolved quickly and transparently.</p>
                     </div>
                 </div>
             </div>

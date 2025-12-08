@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Models\Complaint;
 use App\Models\User;
 
 class HomeController extends Controller
@@ -32,17 +33,33 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home');
+        $data['complaints'] = Complaint::count();
+        $data['complaint_in_progress'] = Complaint::where('complaint_status', 'processing')->count();
+        $data['complaint_completed'] = Complaint::where('complaint_status', 'solved')->count();
+        $data['complainers'] = User::where('role_id', 3)->count();
+        return view('home',$data);
     }
 
     public function complaints()
     {
-        return view('complaints');
+        $data['complaints'] = Complaint::count();
+        $data['complaint_pending'] = Complaint::where('complaint_status', 'pending')->count();
+        $data['complaint_in_progress'] = Complaint::where('complaint_status', 'processing')->count();
+        $data['complaint_completed'] = Complaint::where('complaint_status', 'solved')->count();
+        $data['complaints_data'] = Complaint::all();
+        return view('complaints',$data);
     }
     
     public function complaint_details($id)
     {
-        return view('complaint_details');
+        $data['complaint'] = Complaint::find($id);
+        return view('complaint_details', $data);
+    }
+    
+    public function complaint_details_print($id)
+    {
+        $data['complaint'] = Complaint::find($id);
+        return view('complaint_details_print', $data);
     }
 
     public function change_password()

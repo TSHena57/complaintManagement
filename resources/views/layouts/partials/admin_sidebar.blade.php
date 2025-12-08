@@ -33,20 +33,43 @@
                 </ul>
             </li>
         @endcanany
-         <li>
-            <a href="{{ route('complaint.my-index') }}">
-               <div class="parent-icon"><i class="bi bi-grid"></i>
-               </div>
-               <div class="menu-title"> My Complaints</div>
-            </a>
-         </li>
-         <li>
+        @if (auth()->user()->role_id != 3)
+            @php
+                $notifyAdmin = \App\Models\Complaint::where('notify_admin', 1)->count();
+            @endphp
+            <li>
+                <a href="{{ route('complaint.index') }}">
+                    <div class="parent-icon"><i class="bi bi-grid"></i>
+                    </div>
+                    <div class="menu-title"> All Complaints
+                        @if ($notifyAdmin > 0)
+                            <span class="badge bg-danger" style="margin-left: 5px">{{ $notifyAdmin }}</span>
+                        @endif
+                    </div>
+                </a>
+            </li>
+        @endif
+        <li>
             <a href="{{ route('complaint.create') }}">
-               <div class="parent-icon"><i class="bi bi-grid"></i>
-               </div>
-               <div class="menu-title"> Add Complaints</div>
+                <div class="parent-icon"><i class="bi bi-grid"></i>
+                </div>
+                <div class="menu-title"> Add Complaints</div>
             </a>
-         </li>
+        </li>
+        @php
+            $notifyUser = \App\Models\Complaint::where('notify_user', 1)->count();
+        @endphp
+        <li>
+            <a href="{{ route('complaint.my-index') }}">
+                <div class="parent-icon"><i class="bi bi-grid"></i>
+                </div>
+                <div class="menu-title"> My Complaints
+                    @if ($notifyUser > 0)
+                        <span class="badge bg-danger" style="margin-left: 5px">{{ $notifyUser }}</span>
+                    @endif
+                </div>
+            </a>
+        </li>
     </ul>
     <!--end navigation-->
 </aside>

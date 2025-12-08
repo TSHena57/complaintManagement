@@ -1,16 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\RoleController;
 
 Auth::routes(['verify' => true]);
+Route::get('/run-migrate-seed', function () {
+    // Run migrate
+    Artisan::call('migrate', [
+        '--force' => true,
+    ]);
 
+    // Run seed
+    Artisan::call('db:seed', [
+        '--force' => true,
+    ]);
+
+    return "Migrate & Seed completed!";
+});
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/complaints', [HomeController::class, 'complaints'])->name('complaints');
 Route::get('/complaints/{id}', [HomeController::class, 'complaint_details'])->name('complaint_details');
+Route::get('/complaints-print/{id}', [HomeController::class, 'complaint_details_print'])->name('complaint_details_print');
 
 Route::middleware(['auth', 'verified'])->prefix('/admin')->group(function () {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('admin_home');
@@ -34,8 +48,10 @@ Route::middleware(['auth', 'verified'])->prefix('/admin')->group(function () {
         Route::get('/all', 'index')->name('complaint.index');
         Route::get('/create', 'create')->name('complaint.create');
         Route::post('/store', 'store')->name('complaint.store');
+        Route::get('/show/{id}', 'show')->name('complaint.show');
         Route::get('/edit/{id}', 'edit')->name('complaint.edit');
         Route::post('/update/{id}', 'update')->name('complaint.update');
+        Route::post('/reply/{id}', 'reply')->name('complaint.reply');
         Route::post('/delete', 'destroy')->name('complaint.delete');
     });
 });

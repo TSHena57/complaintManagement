@@ -18,7 +18,8 @@ return new class extends Migration
             $table->text('address');
             $table->text('description');
             $table->enum('complaint_status', ['pending', 'processing', 'invalid', 'action_taken', 'solved' ])->default('pending');
-            $table->boolean('is_viewed')->default(0);
+            $table->boolean('notify_user')->default(false);   // Notify ticket owner
+            $table->boolean('notify_admin')->default(false);
             $table->timestamps();
         });
     }

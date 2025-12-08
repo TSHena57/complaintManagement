@@ -56,11 +56,13 @@
                             @foreach ($roles as $role)
                             <tr>
                                 <td>{{ $role->name }}</td>
-                                    <td>
-                                        @if ($role->id > 6)
-                                            <button type="button" class="btn btn-sm btn-warning edit" data-id="{{ $role->id }}">Edit</button>
-                                        @endif
-                                        <a href="{{ route('user-management.permission-index', ['id' => $role->id]) }}" class="btn btn-sm btn-primary">Manage Permission</a>
+                                <td>
+                                    @if ($role->id > 3)
+                                        <button type="button" class="btn btn-sm btn-warning edit" data-id="{{ $role->id }}">Edit</button>
+                                    @endif
+                                    @if ($role->id != 3)
+                                    <a href="{{ route('user-management.permission-index', ['id' => $role->id]) }}" class="btn btn-sm btn-primary">Manage Permission</a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
