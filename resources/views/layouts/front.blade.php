@@ -28,6 +28,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link @if (Route::is('home')) active @endif"
                             href="{{ route('home') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link @if (Route::is('information')) active @endif"
+                            href="{{ route('information') }}">Information</a></li>
                     <li class="nav-item"><a class="nav-link @if (Route::is('complaints')) active @endif"
                             href="{{ route('complaints') }}">Complaints</a></li>
                     @if (!auth()->check())

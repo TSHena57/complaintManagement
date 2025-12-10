@@ -23,6 +23,8 @@ Route::get('/run-migrate-seed', function () {
 });
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/complaints', [HomeController::class, 'complaints'])->name('complaints');
+Route::get('/information', [HomeController::class, 'information'])->name('information');
+Route::post('/student-submit', [HomeController::class, 'submit'])->name('student.submit');
 Route::get('/complaints/{id}', [HomeController::class, 'complaint_details'])->name('complaint_details');
 Route::get('/complaints-print/{id}', [HomeController::class, 'complaint_details_print'])->name('complaint_details_print');
 

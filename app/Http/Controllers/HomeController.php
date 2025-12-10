@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Complaint;
 use App\Models\User;
+use App\Mail\StudentInfoMail;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -18,6 +20,15 @@ class HomeController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+    }
+
+    public function submit(Request $request)
+    {
+        $data = $request->all();
+
+        Mail::to($data['email'])->send(new StudentInfoMail($data));
+
+        return back()->with('success', 'Email sent successfully!');
     }
 
     /**
@@ -54,6 +65,11 @@ class HomeController extends Controller
     {
         $data['complaint'] = Complaint::find($id);
         return view('complaint_details', $data);
+    }
+    
+    public function information()
+    {
+        return view('information');
     }
     
     public function complaint_details_print($id)
